@@ -2,7 +2,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   color: white;
   padding: 0;
   margin: 0;
@@ -12,6 +12,18 @@
   height: 100%;
   background-color: black;
   position: fixed; }
+
+#journal {
+  flex: 1; }
+  #journal * {
+    display: inline-block;
+    border: 1px solid white;
+    width: 30%;
+    height: 100%; }
+
+#dialog-box {
+  flex: 1;
+  border: 1px solid white; }
 
 #dAnswer {
   color: grey;
