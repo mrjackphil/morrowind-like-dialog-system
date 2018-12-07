@@ -1,5 +1,7 @@
 /* global store */
 
+import Topic from './topic.js';
+
 export default class DialogBox {
 	constructor(titleEl, topicsEl, answerEl) {
 		this.elements = {
@@ -45,10 +47,11 @@ export default class DialogBox {
 		if (!topicsArray) throw Error(`There is no topics for character ${charName}.`);
 
 		for (const _i in topicsArray) {
-			const topicEl = this.elements.topics.appendChild( document.createElement( 'div' ) );
+			new Topic( this.elements.topics, null, topicsArray[_i] );
+			// const topicEl = this.elements.topics.appendChild( document.createElement( 'div' ) );
 
-			topicEl.classList.add('topic');
-			topicEl.innerHTML += topicsArray[_i].title;
+			// topicEl.classList.add('topic');
+			// topicEl.innerHTML += topicsArray[_i].title;
 		}
 	}
 
