@@ -1,23 +1,46 @@
-import { Character } from './dialog.js';
+import { Character } from './character.js';
+import Store from './store.js';
+import Loader from './loader.js';
+import DialogBox from './dialogbox.js';
 
 class Game {
 	constructor(){
-		this.el = document.querySelector('#game');
-		this.dialogBox = document.querySelector('#dialog-box')
-		this.initCharacters();
+		this.dialogBox = new DialogBox(
+			document.querySelector('#dName'),
+			document.querySelector('#dTopics'),
+			document.querySelector('#dAnswer')
+		);
+
+		this.loading();
 	}
 
-	initCharacters() {
-		const bot = new Character();
-		const pre = this.dialogBox.appendChild( document.createElement('pre') );
-		const link = 
+	loading() {
+		
+		const loader = new Loader();
+		loader.load.characters(['Jane', 'John'])
+			.then( ar => {
+				return ar.map( json => {
+					const char = new Character(json);
+					return {[char.data.name]: char}; });
+				})
+			.then( ar => {
+				const obj = ar.reduce((acc, cur) => {
+					acc = Object.assign(acc, cur);
+					return acc;
+				}, {});
 
-		pre.innerHTML = bot.data.name;
-		bot.data.topics.forEach( topic => {
-			pre.innerHTML += '\n';
-			pre.innerHTML += topic.title;
-		});
+				store.commit('setCharacters', obj);
+
+				if (store.state.characters.Jane) {
+					// this.showCharacterDialog(store.state.elements.dialogBox, 'Jane');
+					this.dialogBox.update();
+					// this.dialogBox.hideTitle();
+				}
+
+			})
+			.catch( er => { throw Error(er.message); } );
 	}
 }
 
-const game = new Game();
+window.store = new Store();
+window.game = new Game();

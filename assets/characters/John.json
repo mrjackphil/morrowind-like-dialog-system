@@ -1,0 +1,15 @@
+{
+	"name": "John",
+	"topics": [
+		{
+			"id": "greetings",
+			"title": "Hello!",
+			"text": "Hi, I'm John."
+		},
+		{
+			"id": "news",
+			"title": "Are there any news?",
+			"text": "What are talking about? I'm looking like a postman or something?"
+		}
+	]
+}

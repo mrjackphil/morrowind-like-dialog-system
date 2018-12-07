@@ -1,0 +1,28 @@
+#game {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	color: white;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	position: fixed;
+}
+
+#dAnswer {
+	color: grey;
+	margin: 2rem;
+}
+
+.topic {
+	color: grey;
+	&:hover {
+		color: white;
+		cursor: pointer;
+	}
+}

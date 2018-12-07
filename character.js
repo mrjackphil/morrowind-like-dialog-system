@@ -15,9 +15,17 @@ export class Character {
 				}
 			]
 		};
+
+		if (data) { this.data = data; }
 	}
+}
 
-	loadFromJSON(json) {
+export class Topic {
+	constructor(el, data) {
+		if (!el) alert('HTMLElement is not provided for Topic Class');
+		if (!data) alert('Data is not provided for Topic Class');
 
+		this.el = el;
+		this.data = data;
 	}
 }
