@@ -18,28 +18,18 @@ class Game {
 		
 		const loader = new Loader();
 		loader.load.characters(['Jane', 'John'])
-			.then( ar => {
-				return ar.map( json => {
-					const char = new Character(json);
-					return {[char.data.name]: char}; });
-				})
-			.then( ar => {
-				const obj = ar.reduce((acc, cur) => {
-					acc = Object.assign(acc, cur);
-					return acc;
-				}, {});
-
+			.then( ar => Character.arrayToStoreObject(ar) )
+			.then( obj => {
 				store.commit('setCharacters', obj);
 
 				if (store.state.characters.Jane) {
-					// this.showCharacterDialog(store.state.elements.dialogBox, 'Jane');
 					this.dialogBox.update();
-					// this.dialogBox.hideTitle();
 				}
 
 			})
 			.catch( er => { throw Error(er.message); } );
 	}
+
 }
 
 window.store = new Store();

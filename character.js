@@ -18,14 +18,17 @@ export class Character {
 
 		if (data) { this.data = data; }
 	}
-}
 
-export class Topic {
-	constructor(el, data) {
-		if (!el) alert('HTMLElement is not provided for Topic Class');
-		if (!data) alert('Data is not provided for Topic Class');
+	static arrayToStoreObject(ar) {
+		return ar.map( json => {
+			const char = new Character(json);
+			return {[char.data.name]: char}; 
+		})
+		.reduce((acc, cur) => {
+			acc = Object.assign(acc, cur);
+			return acc;
+		}, {});
 
-		this.el = el;
-		this.data = data;
+
 	}
 }
