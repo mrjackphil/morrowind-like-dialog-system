@@ -2,12 +2,12 @@
 	"name": "John",
 	"topics": [
 		{
-			"id": "greetings",
+			"topics": "greetings",
 			"title": "Hello!",
 			"text": "Hi, I'm John."
 		},
 		{
-			"id": "news",
+			"topics": "news",
 			"title": "Are there any news?",
 			"text": "What are talking about? I'm looking like a postman or something?"
 		}
